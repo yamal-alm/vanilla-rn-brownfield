@@ -16,9 +16,11 @@ pluginManagement {
 
 plugins { id("com.facebook.react.settings") }
 
-extensions.configure<com.facebook.react.ReactSettingsExtension> { autolinkLibrariesFromCommand(
-    workingDirectory = file(".")
-) }
+extensions.configure<com.facebook.react.ReactSettingsExtension> {
+    autolinkLibrariesFromCommand(
+        workingDirectory = file(".")
+    )
+}
 includeBuild("node_modules/@react-native/gradle-plugin")
 
 rootProject.name = "vanilla-brownfield-custom"
