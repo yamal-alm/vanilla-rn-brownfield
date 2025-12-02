@@ -19,7 +19,9 @@ class MainApplication : Application(), ReactApplication {
         DefaultNewArchitectureEntryPoint.load()
     }
 
-    override val reactNativeHost: ReactNativeHost =
+    override val reactHost: ReactHost
+        get() = DefaultReactHost.getDefaultReactHost(
+            this,
             object : DefaultReactNativeHost(this) {
                 override fun getPackages(): List<ReactPackage> =
                     PackageList(this).packages
@@ -28,10 +30,5 @@ class MainApplication : Application(), ReactApplication {
 
                 override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
             }
-
-    override val reactHost: ReactHost
-        get() = DefaultReactHost.getDefaultReactHost(
-            this,
-            reactNativeHost
         )
 }
