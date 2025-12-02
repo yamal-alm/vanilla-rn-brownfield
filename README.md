@@ -2,6 +2,9 @@
 
 A React Native brownfield application integrated with an Android native project.
 
+[This](https://reactnative.dev/docs/integration-with-existing-apps#3-adding-react-native-to-your-app) is the documentation that have been followed to create this project. 
+The main difference is that this project doesn't require the base Android native project to be located inside any /android subfolder. 
+
 ## Prerequisites
 
 - Node.js >= 20
