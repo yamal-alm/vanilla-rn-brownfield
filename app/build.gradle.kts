@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -51,9 +53,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
+        }
     }
+
     buildFeatures {
         compose = true
     }
@@ -69,8 +74,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
 
-    implementation("com.facebook.react:react-android")
-    implementation("com.facebook.react:hermes-android")
+    implementation(libs.react.android)
+    implementation(libs.hermes.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
