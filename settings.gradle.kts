@@ -18,7 +18,8 @@ plugins { id("com.facebook.react.settings") }
 
 extensions.configure<com.facebook.react.ReactSettingsExtension> {
     autolinkLibrariesFromCommand(
-        workingDirectory = file(".")
+        workingDirectory = file("react"),
+        command = listOf("npx", "react-native", "config")
     )
 }
 includeBuild("react/node_modules/@react-native/gradle-plugin")
