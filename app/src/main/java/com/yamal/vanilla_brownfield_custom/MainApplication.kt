@@ -10,6 +10,7 @@ import com.facebook.react.defaults.DefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.soloader.OpenSourceMergedSoMapping
 import com.facebook.soloader.SoLoader
+import com.yamal.vanilla_brownfield_custom.bridge.HelloWorldTurboPackage
 
 class MainApplication : Application(), ReactApplication {
     override fun onCreate() {
@@ -22,8 +23,11 @@ class MainApplication : Application(), ReactApplication {
         get() = DefaultReactHost.getDefaultReactHost(
             this,
             object : DefaultReactNativeHost(this) {
-                override fun getPackages(): List<ReactPackage> =
-                    PackageList(this).packages
+                override fun getPackages(): List<ReactPackage> {
+                    val packages = PackageList(this).packages.toMutableList()
+                    packages.add(HelloWorldTurboPackage())
+                    return packages
+                }
 
                 override fun getJSMainModuleName() = "src/index"
 
