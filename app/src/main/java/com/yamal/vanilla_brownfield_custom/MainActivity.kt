@@ -5,14 +5,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.yamal.vanilla_brownfield_custom.ui.theme.VanillabrownfieldcustomTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,36 +22,40 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             VanillabrownfieldcustomTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Button(
-                        modifier = Modifier.padding(innerPadding),
-                        onClick = {
-                            val intent = Intent(this, HelloWorldReactActivity::class.java)
-                            startActivity(intent)
-                        }
+                Scaffold(
+                    modifier = Modifier.fillMaxSize()
+                ) { innerPadding ->
+                    Column(
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-                        Text(
-                            text = "Open React Native Screen",
-                        )
+                        Button(
+                            onClick = {
+                                val intent = Intent(this@MainActivity, HelloWorldReactActivity::class.java)
+                                startActivity(intent)
+                            }
+                        ) {
+                            Text(
+                                text = "Open a React Native Screen",
+                            )
+                        }
+
+                        Button(
+                            onClick = {
+                                val intent = Intent(this@MainActivity, AnotherReactActivity::class.java)
+                                startActivity(intent)
+                            }
+                        ) {
+                            Text(
+                                text = "Open another React Native Screen",
+                            )
+                        }
                     }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    VanillabrownfieldcustomTheme {
-        Greeting("Android")
     }
 }

@@ -27,6 +27,11 @@
             android:name=".HelloWorldReactActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             />
+
+        <activity
+            android:name=".AnotherReactActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            />
     </application>
 
 </manifest>
