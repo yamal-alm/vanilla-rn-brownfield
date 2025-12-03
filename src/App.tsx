@@ -7,8 +7,7 @@ const App: React.FC = () => {
 
 	const handleHelloPress = () => {
 		try {
-			const result = HelloWorldModule.hello('React Native');
-			setMessage(result);
+			HelloWorldModule.hello('React Native');
 		} catch (error) {
 			setMessage('Error calling TurboModule: ' + error);
 		}
