@@ -17,6 +17,9 @@ The main difference is that this project doesn't require the base Android native
 
 ### 1. Install Node Modules
 
+> [!NOTE]
+> every `npm` command needs to be executed from `react` subfolder
+
 First, install all the required npm dependencies:
 
 ```bash
