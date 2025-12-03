@@ -11,7 +11,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 
-    includeBuild("node_modules/@react-native/gradle-plugin")
+    includeBuild("src/node_modules/@react-native/gradle-plugin")
 }
 
 plugins { id("com.facebook.react.settings") }
@@ -21,7 +21,7 @@ extensions.configure<com.facebook.react.ReactSettingsExtension> {
         workingDirectory = file(".")
     )
 }
-includeBuild("node_modules/@react-native/gradle-plugin")
+includeBuild("src/node_modules/@react-native/gradle-plugin")
 
 rootProject.name = "vanilla-brownfield-custom"
 include(":app")
