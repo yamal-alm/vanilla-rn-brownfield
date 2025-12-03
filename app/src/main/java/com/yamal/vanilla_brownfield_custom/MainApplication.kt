@@ -24,7 +24,7 @@ class MainApplication : Application(), ReactApplication {
                 override fun getPackages(): List<ReactPackage> =
                     PackageList(this).packages
 
-                override fun getJSMainModuleName() = "index"
+                override fun getJSMainModuleName() = "src/index"
 
                 override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
             }

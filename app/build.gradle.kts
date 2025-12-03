@@ -89,3 +89,7 @@ react {
 
     autolinkLibrariesWithApp()
 }
+
+extra["react"] = mapOf(
+    "entryFile" to "../src/index.js"
+)
