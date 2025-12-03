@@ -29,7 +29,7 @@ class MainApplication : Application(), ReactApplication {
                     return packages
                 }
 
-                override fun getJSMainModuleName() = "src/index"
+                override fun getJSMainModuleName() = "index"
 
                 override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
             }
