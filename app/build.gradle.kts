@@ -86,6 +86,6 @@ react {
     reactNativeDir = File("../node_modules/react-native")
     cliFile = File("../node_modules/react-native/cli.js")
     codegenDir = File("../node_modules/@react-native/codegen")
-
+    entryFile = File("../src/index.js")
     autolinkLibrariesWithApp()
 }
