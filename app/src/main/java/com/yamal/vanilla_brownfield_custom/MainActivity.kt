@@ -14,6 +14,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.yamal.vanilla_brownfield_custom.another.AnotherReactActivity
+import com.yamal.vanilla_brownfield_custom.camera.CameraActivity
+import com.yamal.vanilla_brownfield_custom.helloworld.HelloWorldReactActivity
 import com.yamal.vanilla_brownfield_custom.ui.theme.VanillabrownfieldcustomTheme
 
 class MainActivity : ComponentActivity() {
@@ -51,6 +54,17 @@ class MainActivity : ComponentActivity() {
                         ) {
                             Text(
                                 text = "Open another React Native Screen",
+                            )
+                        }
+
+                        Button(
+                            onClick = {
+                                val intent = Intent(this@MainActivity, CameraActivity::class.java)
+                                startActivity(intent)
+                            }
+                        ) {
+                            Text(
+                                text = "Open React Camera",
                             )
                         }
                     }

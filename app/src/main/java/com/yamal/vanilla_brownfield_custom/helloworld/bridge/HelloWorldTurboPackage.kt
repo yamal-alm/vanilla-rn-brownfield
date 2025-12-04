@@ -1,4 +1,4 @@
-package com.yamal.vanilla_brownfield_custom.bridge
+package com.yamal.vanilla_brownfield_custom.helloworld.bridge
 
 import com.facebook.react.BaseReactPackage
 import com.facebook.react.bridge.NativeModule

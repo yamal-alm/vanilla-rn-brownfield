@@ -10,7 +10,7 @@ import com.facebook.react.defaults.DefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.soloader.OpenSourceMergedSoMapping
 import com.facebook.soloader.SoLoader
-import com.yamal.vanilla_brownfield_custom.bridge.HelloWorldTurboPackage
+import com.yamal.vanilla_brownfield_custom.helloworld.bridge.HelloWorldTurboPackage
 
 class MainApplication : Application(), ReactApplication {
     override fun onCreate() {
