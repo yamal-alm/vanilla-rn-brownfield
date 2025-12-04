@@ -94,3 +94,29 @@ react {
     entryFile = File("../react/index.js")
     autolinkLibrariesWithApp()
 }
+
+val outputFile = rootProject.layout.buildDirectory.file("generated/autolinking/autolinking.json")
+
+val generateAutolinkingJson by tasks.registering(Exec::class) {
+    workingDir = project.projectDir.resolve("../react").normalize()
+    commandLine("npx", "react-native", "config")
+
+    doFirst {
+        val outFile = outputFile.get().asFile
+        outFile.parentFile.mkdirs()
+        standardOutput = outFile.outputStream()
+    }
+
+
+    isIgnoreExitValue = false
+
+    doLast {
+        logger.lifecycle("autolinking.json generated in: ${outputFile.get().asFile.absolutePath}")
+    }
+
+    outputs.file(outputFile)
+}
+
+tasks.named("preBuild") {
+    finalizedBy("generateAutolinkingJson")
+}
