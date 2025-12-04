@@ -99,6 +99,8 @@ val outputFile = rootProject.layout.buildDirectory.file("generated/autolinking/a
 
 val generateAutolinkingJson by tasks.registering(Exec::class) {
     workingDir = project.projectDir.resolve("../react").normalize()
+    isIgnoreExitValue = false
+
     commandLine("npx", "react-native", "config")
 
     doFirst {
@@ -106,9 +108,6 @@ val generateAutolinkingJson by tasks.registering(Exec::class) {
         outFile.parentFile.mkdirs()
         standardOutput = outFile.outputStream()
     }
-
-
-    isIgnoreExitValue = false
 
     doLast {
         logger.lifecycle("autolinking.json generated in: ${outputFile.get().asFile.absolutePath}")
