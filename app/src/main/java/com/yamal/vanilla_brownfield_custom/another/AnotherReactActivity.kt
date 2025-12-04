@@ -1,4 +1,4 @@
-package com.yamal.vanilla_brownfield_custom
+package com.yamal.vanilla_brownfield_custom.another
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

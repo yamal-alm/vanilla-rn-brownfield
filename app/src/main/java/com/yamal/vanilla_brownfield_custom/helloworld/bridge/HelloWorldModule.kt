@@ -1,4 +1,4 @@
-package com.yamal.vanilla_brownfield_custom.bridge
+package com.yamal.vanilla_brownfield_custom.helloworld.bridge
 
 import android.util.Log
 import com.facebook.react.bridge.ReactApplicationContext
