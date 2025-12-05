@@ -1,5 +1,3 @@
-
-// src/ocr/onnxRuntime.ts
 import { InferenceSession, Tensor, env } from 'onnxruntime-react-native';
 import { Platform } from 'react-native';
 
@@ -14,7 +12,6 @@ const getModelUri = async (filename: string) => {
   }
 };
 
-// ====== TIPOS / UTILS ======
 type PreprocessDetResult = {
   data: Float32Array;
   w: number;
@@ -106,7 +103,6 @@ export function preprocessForDet(
   return { data: chw, w, h, scaleX, scaleY };
 }
 
-// ====== SESIONES (exportadas) ======
 let detSession: InferenceSession | null = null;
 let recSession: InferenceSession | null = null;
 
@@ -117,24 +113,18 @@ export async function initOCR() {
   recSession = await InferenceSession.create(recUri);
 }
 
-// ====== PLACEHOLDERS (debes implementarlas o importarlas) ======
 type DetBox = { polygon: [number, number][], score: number };
 
-// ¡OJO! Estas funciones/variables deben existir o el código no compila:
 function postprocessDB(...args: any[]): DetBox[] {
-  // TODO: implementa tu postproceso DB y devuelve cajas
   return [];
 }
 function warpAndCrop(...args: any[]): { data: Float32Array; w: number; h: number } {
-  // TODO: recorte con transformación de perspectiva y redimensionar a alto 32
   return { data: new Float32Array(32 * 32 * 3), w: 32, h: 32 };
 }
 function preprocessForRec(...args: any[]): { data: Float32Array; w: number; h: number } {
-  // TODO: normalización para REC (típicamente 1x3x32xW con mean/std diferentes)
   return { data: new Float32Array(3 * 32 * 32), w: 32, h: 32 };
 }
 function formatLogits(tensor: Tensor): number[][] {
-  // Convierte [1, T, C] o [T, C] a matriz 2D
   const dims = (tensor as any).dims ?? [];
   const data = tensor.data as Float32Array;
   if (dims.length === 3) {
@@ -208,7 +198,6 @@ export function ctcDecode(logits2D: number[][], charset: string[], blankIndex: n
   return { text, conf };
 }
 
-// ====== PIPELINE ======
 export async function runOCRFromBitmap(rgbData: Uint8Array, width: number, height: number) {
   if (!detSession || !recSession) await initOCR();
 
