@@ -1,3 +1,4 @@
+import 'react-native-reanimated';
 import {AppRegistry} from 'react-native';
 import App from './App.tsx';
 import AnotherApp from './AnotherApp.tsx';
