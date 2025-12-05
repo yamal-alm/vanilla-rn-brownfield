@@ -11,18 +11,30 @@ pluginManagement {
         gradlePluginPortal()
     }
 
-    includeBuild("react/node_modules/@react-native/gradle-plugin")
+    includeBuild("node_modules/@react-native/gradle-plugin")
+    includeBuild("node_modules/expo-modules-autolinking/android/expo-gradle-plugin")
 }
 
-plugins { id("com.facebook.react.settings") }
+plugins {
+    id("com.facebook.react.settings")
+    id("expo-autolinking-settings")
+}
+
+expoAutolinking {
+    projectRoot = file(".")
+}
 
 extensions.configure<com.facebook.react.ReactSettingsExtension> {
     autolinkLibrariesFromCommand(
-        workingDirectory = file("react"),
+        workingDirectory = file("."),
         command = listOf("npx", "react-native", "config")
     )
 }
-includeBuild("react/node_modules/@react-native/gradle-plugin")
+
+expoAutolinking.useExpoModules()
+expoAutolinking.useExpoVersionCatalog()
+
+includeBuild("node_modules/@react-native/gradle-plugin")
 
 rootProject.name = "vanilla-brownfield-custom"
 include(":app")
