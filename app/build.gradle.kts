@@ -98,7 +98,7 @@ react {
 val outputFile = rootProject.layout.buildDirectory.file("generated/autolinking/autolinking.json")
 
 val generateAutolinkingJson by tasks.registering(Exec::class) {
-    workingDir = project.projectDir.resolve("../react").normalize()
+    workingDir = project.projectDir.resolve("..").normalize()
     isIgnoreExitValue = false
 
     commandLine("npx", "react-native", "config")

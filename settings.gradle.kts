@@ -35,6 +35,7 @@ expoAutolinking.useExpoModules()
 expoAutolinking.useExpoVersionCatalog()
 
 includeBuild("node_modules/@react-native/gradle-plugin")
+includeBuild(expoAutolinking.reactNativeGradlePlugin)
 
 rootProject.name = "vanilla-brownfield-custom"
 include(":app")
