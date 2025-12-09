@@ -40,10 +40,5 @@
   },
   "engines": {
     "node": ">=20"
-  },
-  "expo": {
-    "autolinking": {
-      "searchPaths": [".", "app"]
-    }
   }
 }
