@@ -21,3 +21,5 @@
 #-renamesourcefileattribute SourceFile
 
 -keep class com.facebook.react.** { *; }
+-keep class org.pytorch.executorch.** { *; }
+-keep class expo.** { *; }

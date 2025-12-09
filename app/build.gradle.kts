@@ -47,6 +47,8 @@ android {
             )
 
             signingConfig = signingConfigs.getByName("release")
+
+            ndk.debugSymbolLevel = "FULL"
         }
     }
     compileOptions {
@@ -87,10 +89,10 @@ dependencies {
 }
 
 react {
-    root = File("../react")
-    reactNativeDir = File("../react/node_modules/react-native")
-    cliFile = File("../react/node_modules/react-native/cli.js")
-    codegenDir = File("../react/node_modules/@react-native/codegen")
+    root = File("../")
+    reactNativeDir = File("../node_modules/react-native")
+    cliFile = File("../node_modules/react-native/cli.js")
+    codegenDir = File("../node_modules/@react-native/codegen")
     entryFile = File("../react/index.js")
     autolinkLibrariesWithApp()
 }
@@ -98,7 +100,7 @@ react {
 val outputFile = rootProject.layout.buildDirectory.file("generated/autolinking/autolinking.json")
 
 val generateAutolinkingJson by tasks.registering(Exec::class) {
-    workingDir = project.projectDir.resolve("../react").normalize()
+    workingDir = project.projectDir.resolve("..").normalize()
     isIgnoreExitValue = false
 
     commandLine("npx", "react-native", "config")
