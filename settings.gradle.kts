@@ -27,7 +27,8 @@ expoAutolinking {
 extensions.configure<com.facebook.react.ReactSettingsExtension> {
     autolinkLibrariesFromCommand(
         workingDirectory = file("."),
-        command = listOf("npx", "react-native", "config")
+        command = listOf("npx", "react-native", "config"),
+        lockFiles = files("package-lock.json")
     )
 }
 

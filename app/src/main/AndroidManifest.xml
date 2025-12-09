@@ -31,11 +31,6 @@
             />
 
         <activity
-            android:name=".another.AnotherReactActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            />
-
-        <activity
             android:name=".camera.CameraActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             />
