@@ -1,7 +1,7 @@
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, View, TouchableOpacity, Text, Image, ActivityIndicator, ScrollView } from "react-native";
-import { Camera, useCameraDevice } from "react-native-vision-camera";
+import { Camera, useCameraDevice, useCameraPermission } from "react-native-vision-camera";
 import { useOCR, OCR_ENGLISH } from 'react-native-executorch';
 
 export default function CameraApp() {
@@ -11,6 +11,7 @@ export default function CameraApp() {
     const [ocrDetections, setOcrDetections] = useState<string[]>([]);
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const model = useOCR({ model: OCR_ENGLISH });
+    const { hasPermission, requestPermission } = useCameraPermission();
 
     const takePhoto = async () => {
         if (cameraRef.current) {
@@ -53,6 +54,22 @@ export default function CameraApp() {
         setImageLayout(null);
         setIsAnalyzing(false);
     };
+
+
+    useEffect(() => {
+      if (!hasPermission) {
+        requestPermission();
+      }
+    }, [hasPermission, requestPermission]);
+
+
+    if (!hasPermission || !device) {
+      return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Text>Camera permission is required to use this feature.</Text>
+        </View>
+      )
+    }
 
     return (
         <View style={{ flex: 1 }}>
